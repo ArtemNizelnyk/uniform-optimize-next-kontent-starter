@@ -1,0 +1,34 @@
+{
+  "name": "kenico-poc",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next export",
+    "generate:intents": "uniform optimize manifest download --output ./lib/intentManifest.json --apiKey $UNIFORM_API_KEY"
+  },
+  "dependencies": {
+    "@kentico/kontent-delivery": "^10.3.0",
+    "@uniformdev/optimize-tracker-browser": "^8.0.1",
+    "@uniformdev/optimize-tracker-react": "^8.0.1",
+    "@uniformdev/optimize-tracker-storage-indexeddb": "^8.0.1",
+    "next": "10.2.0",
+    "nookies": "^2.5.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "rxjs": "^6.6.3",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.31",
+    "@types/react": "^17.0.2",
+    "@uniformdev/cli": "^8.0.1",
+    "autoprefixer": "^10.2.6",
+    "postcss": "^8.3.5",
+    "tailwindcss": "^2.2.4",
+    "typescript": "^4.1.5",
+    "postcss-preset-env": "^6.7.0"
+  }
+}
