@@ -1,20 +1,42 @@
+# Optimize Kontent Next.js Example Project
 
-# Uniform Optimize Kontent Taxonomy Integration
-A "lite" integration of Uniform Optimize intents leveraging Kontent taxonomy.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-* `yarn install`
-* Restore the backup located in the `data` directory using https://kentico.github.io/kontent-template-manager/import
-* Copy `.env.example` to `.env`
-* Populate the `KONTENT_PROJECT_ID` in `.env` using your `Project Id` from Kontent
-* Sign up or create a new account for [Uniform Optimize](https://uniform.app/).
-* Create a site in Uniform Optimize
-* Create an API key in Uniform Optimize in Site Settings
-* Populate `UNIFORM_API_KEY` in `.env` with the Uniform Optimize API key
-* Create an intent named `Developer` with a public ID of `dev`. `dev` is what is stored on the taxonomy item's `codename`.
-* Create an intent named `Marketer`
-* Publish the site in Uniform Optimize
-* `yarn generate:intents`
-* `yarn dev`
 
-In production builds, `generate:intents` should be run before each site builds so all of the latest intent data is built with the application.
+## Get your kontent content
+
+- Restore the backup located in the `data` directory using https://kentico.github.io/kontent-template-manager/import
+
+### Configure environment variables
+
+- Copy .env.example to .env
+- Set kontent variable values to match your CMS
+- Configure your Uniform data source
+
+### Install packages
+
+```shell
+npm i
+# or
+yarn
+```
+
+### Run the development server
+
+```shell
+npm run dev
+# or
+yarn dev
+```
+
+Open <http://localhost:4120> with your browser to see the result.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!

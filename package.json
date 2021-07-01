@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "run-s generate:intents dev:next",
+    "dev:next": "next dev",
+    "build": "run-s generate:intents build:next",
+    "build:next": "next build",
     "start": "next start",
     "export": "next export",
+    "ci:build": "run-s build export",
     "generate:intents": "uniform optimize manifest download --output ./lib/intentManifest.json --apiKey $UNIFORM_API_KEY"
   },
   "dependencies": {
@@ -27,8 +30,9 @@
     "@uniformdev/cli": "^8.0.1",
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.5",
+    "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.2.4",
     "typescript": "^4.1.5",
-    "postcss-preset-env": "^6.7.0"
+    "npm-run-all": "^4.1.5"
   }
 }
