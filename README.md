@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+This is a 'lite' and bare bones personalization example.
+
 ## Get your kontent content
 
 - Restore the backup located in the `data` directory using https://kentico.github.io/kontent-template-manager/import
@@ -30,7 +32,7 @@ npm run dev
 yarn dev
 ```
 
-Open <http://localhost:4120> with your browser to see the result.
+Open <http://localhost:3000> with your browser to see the result.
 
 ## Learn More
 
