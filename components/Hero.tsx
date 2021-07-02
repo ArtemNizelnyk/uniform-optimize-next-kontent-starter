@@ -11,10 +11,10 @@ export const Hero = ({ title, description, image, intentTag }: HeroData) => {
           <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left min-h-500">
             <p className="uppercase tracking-loose w-full">Uniform demo</p>
             <h1 className="my-4 text-5xl font-bold leading-tight">{title}</h1>
-            <p
+            <div
               className="leading-normal text-2xl mb-8"
               dangerouslySetInnerHTML={{ __html: description }}
-            ></p>
+            ></div>
           </div>
 
           <div className="w-full md:w-3/5 py-6 text-center">

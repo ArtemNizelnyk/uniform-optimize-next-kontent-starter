@@ -6,9 +6,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 This is a 'lite' and bare bones personalization example.
 
-## Get your kontent content
+### Get your kontent content
 
 - Restore the backup located in the `data` directory using https://kentico.github.io/kontent-template-manager/import
+
+###
+
+- Go into the Kontent CMS, find the Hero Banner component, edit the intent tags field settings.
+- Add your API Uniform API key.
 
 ### Configure environment variables
 

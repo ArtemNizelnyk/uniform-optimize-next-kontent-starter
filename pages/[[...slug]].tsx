@@ -22,7 +22,10 @@ export default function Home({ title, components }: HomeProps) {
     <>
       <Head>
         <title>{title}</title>
-        <body className="leading-normal tracking-normal text-white gradient" />
+        <meta
+          name="description"
+          content="UniformConf, a Uniform Optimize demo site"
+        />
       </Head>
       {components.map((component, index) => {
         if (isPersonalizedHeroData(component)) {

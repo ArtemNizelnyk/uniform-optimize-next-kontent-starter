@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-import localTracker from "../lib/local-tracker";
+import { localTracker } from "../lib/local-tracker";
 import { UniformTracker } from "@uniformdev/optimize-tracker-react";
 
 function MyApp({ Component, pageProps }) {
