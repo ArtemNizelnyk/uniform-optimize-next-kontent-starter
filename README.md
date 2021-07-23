@@ -41,9 +41,8 @@ Open <http://localhost:3000> with your browser to see the result.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+For full documentation on integrating Kenico Kontent with Uniform Optimize go here: <https://docs.uniform.app/optimize/dev/content-management/kontent/getting-started/>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+It is also possible to use Edge Based personalization with CDN Edge workders. This would make sur epersonalization can also work without the need of JavaScript.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Reach out to <https://twitter.com/timbenniks> on Twitter or sign up for a demo at <https://uniform.dev/sign-up> for more information.
