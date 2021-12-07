@@ -29,6 +29,10 @@ export const isHeroItem = (item: IContentItem): item is HeroItem => {
 
 export const deliveryClient = new DeliveryClient({
   projectId: process.env.KONTENT_PROJECT_ID,
+  previewApiKey: process.env.KONTENT_PREVIEW_API,
+  globalQueryConfig: {
+    usePreviewMode: true,
+  },
   typeResolvers: [
     new TypeResolver('page', () => new PageItem()),
     new TypeResolver('personalized_hero_banner', () => new PersonalizedHeroItem()),
