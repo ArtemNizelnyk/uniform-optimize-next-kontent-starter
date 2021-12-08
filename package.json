@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@kentico/kontent-delivery": "^10.3.0",
+    "@kentico/kontent-smart-link": "^2.2.1",
     "@uniformdev/optimize-tracker-analytics": "^13.0.0",
     "@uniformdev/optimize-tracker-browser": "^13.0.0",
     "@uniformdev/optimize-tracker-react": "^13.0.0",
@@ -30,10 +31,10 @@
     "@types/react": "^17.0.2",
     "@uniformdev/cli": "^13.0.0",
     "autoprefixer": "^10.2.6",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.3.5",
     "postcss-preset-env": "^6.7.0",
     "tailwindcss": "^2.2.4",
-    "typescript": "^4.1.5",
-    "npm-run-all": "^4.1.5"
+    "typescript": "^4.1.5"
   }
 }

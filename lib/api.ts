@@ -17,6 +17,7 @@ export const isPersonalizedHeroItem = (item: IContentItem): item is Personalized
 }
 
 export class HeroItem extends ContentItem {
+  public id: string;
   public title: Elements.TextElement;
   public description: Elements.RichTextElement;
   public image: Elements.AssetsElement;

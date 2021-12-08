@@ -6,6 +6,7 @@ export enum ComponentType {
 }
 
 export type HomeProps = {
+  id: string;
   title: string;
   components: (HeroData | PersonalizedHeroData)[]
 }
@@ -13,6 +14,7 @@ export type HomeProps = {
 export type ComponentData = HeroData | PersonalizedHeroData;
 
 export type HeroData = {
+  id: string;
   type: ComponentType.Hero;
   title: string;
   description: string;

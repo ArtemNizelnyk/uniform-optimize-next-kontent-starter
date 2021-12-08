@@ -10,8 +10,13 @@ export const convertImage = (imageValue) => {
   return imageValue.value[0].url
 }
 
+export const convertId = (system) => {
+  return system.id
+}
+
 export const convertHero = (hero: HeroItem): HeroData => {
   return {
+    id: convertId(hero.system),
     type: ComponentType.Hero,
     title: hero.title.value,
     description: hero.description.value,
