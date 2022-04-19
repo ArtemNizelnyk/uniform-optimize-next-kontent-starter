@@ -1,9 +1,8 @@
-import { useBehaviorTracking } from "@uniformdev/optimize-tracker-react";
+import { useScores } from "@uniformdev/context-react";
 import { HeroData } from "../lib/types";
 import Splitter from "./Splitter";
 
-export const Hero = ({ title, description, image, intentTag }: HeroData) => {
-  useBehaviorTracking(intentTag);
+export const Hero = ({ title, description, image }: HeroData) => {
   return (
     <>
       <div className="pt-24">

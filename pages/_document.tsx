@@ -1,7 +1,4 @@
-import {
-  ServerState,
-  TrackerRequestContext,
-} from "@uniformdev/optimize-tracker-common";
+import {Context} from "@uniformdev/context";
 import Document, {
   DocumentContext,
   DocumentInitialProps,
@@ -10,14 +7,12 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
-import { createLocalTracker } from "../lib/local-tracker";
+import { createUniformContext } from "../lib/local-tracker";
 
-type CustomDocumentProps = DocumentInitialProps & {
-  serverState: ServerState;
-};
 
-class MyDocument extends Document<CustomDocumentProps> {
-  static getRequestContext = (ctx: DocumentContext): TrackerRequestContext => {
+
+class MyDocument extends Document<DocumentInitialProps> {
+  static getRequestContext = (ctx: DocumentContext): any => {
     const { req } = ctx;
 
     return {
@@ -29,14 +24,10 @@ class MyDocument extends Document<CustomDocumentProps> {
 
   static async getInitialProps(
     ctx: DocumentContext
-  ): Promise<CustomDocumentProps> {
-    const serverTracker = createLocalTracker(ctx);
+  ): Promise<DocumentInitialProps> {
+    const serverTracker = createUniformContext(ctx);
     const requestContext = MyDocument.getRequestContext(ctx);
 
-    await serverTracker.initialize();
-    const { signalMatches, scoring } = await serverTracker.reevaluateSignals(
-      requestContext
-    );
 
     const originalRenderPage = ctx.renderPage;
 
@@ -47,8 +38,6 @@ class MyDocument extends Document<CustomDocumentProps> {
             <App
               {...props}
               tracker={serverTracker}
-              ssrMatches={signalMatches}
-              scoring={scoring}
             />
           ),
       });
@@ -57,9 +46,6 @@ class MyDocument extends Document<CustomDocumentProps> {
 
     return {
       ...initialProps,
-      serverState: {
-        scoring,
-      },
     };
   }
 
@@ -78,7 +64,7 @@ class MyDocument extends Document<CustomDocumentProps> {
             id="__UNIFORM_DATA__"
             type="application/json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(this.props.serverState),
+              __html: JSON.stringify(this.props),
             }}
           ></script>
           <NextScript />

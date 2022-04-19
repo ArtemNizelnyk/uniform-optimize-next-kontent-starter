@@ -1,67 +1,52 @@
 import React from "react";
-import Head from "next/head";
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
-  deliveryClient,
-  isHeroItem,
-  isPersonalizedHeroItem,
-  PageItem,
-} from "../lib/api";
-import { PersonalizedHero } from "../components/PersonalizedHero";
-import {
+  CanvasToKontentProps,
   ComponentData,
-  HomeProps,
   isHeroData,
   isPersonalizedHeroData,
 } from "../lib/types";
-import { Hero } from "../components/Hero";
-import { convertHero, convertPersonalizedHero } from "../lib/utils";
+import { CanvasClient } from '@uniformdev/canvas'
+import { Composition, Slot } from '@uniformdev/canvas-react';
+import resolveRenderer from "../lib/utils";
 
-export default function Home({ title, components }: HomeProps) {
+export default function Home({ composition }: CanvasToKontentProps) {
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta
-          name="description"
-          content="UniformConf, a Uniform Optimize demo site"
-        />
-      </Head>
-      {components.map((component, index) => {
-        if (isPersonalizedHeroData(component)) {
-          return <PersonalizedHero item={component} key={index} />;
-        } else if (isHeroData(component)) {
-          return <Hero {...component} key={index} />;
-        }
-      })}
+    <div>some strange data here</div>
+    <Composition data={composition} resolveRenderer={resolveRenderer}>
+        <Slot name="main" />
+    </Composition>
+
     </>
   );
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async (context) => {
-  const slug = (context.params?.slug as string) || "homepage";
-  const page = await deliveryClient
-    .item<PageItem>(slug)
-    .depthParameter(3)
-    .toPromise();
+export const getStaticProps: GetStaticProps<CanvasToKontentProps> = async (context) => {
 
-  const components = page.item.page_components.value.map<ComponentData>(
-    (component) => {
-      if (isPersonalizedHeroItem(component)) {
-        return convertPersonalizedHero(component);
-      } else if (isHeroItem(component)) {
-        return convertHero(component);
-      }
-    }
-  );
-
-  return {
-    props: {
-      title: slug,
-      components: components,
-    },
-  };
-};
+    // create the Canvas client
+    const client = new CanvasClient({
+      // if this weren't a tutorial, ↙ should be in an environment variable :)
+      apiKey: process.env.UNIFORM_API_KEY,
+      // if this weren't a tutorial, ↙ should be in an environment variable :)
+      projectId: process.env.UNIFORM_PROJECT_ID,
+      apiHost: process.env.UNIFORM_CLI_BASE_URL
+      
+    });
+    const slug = (context.params?.slug as string)|| "";
+    // fetch the composition from Canvas
+    const { composition } = await client.getCompositionBySlug({
+      // if you used something else as your slug, use that here instead
+      slug: "/"+slug,
+    });
+  
+    // set `composition` as a prop to the route
+    return {
+      props: {
+        composition:composition,
+      },
+    };
+  }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

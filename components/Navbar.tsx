@@ -3,7 +3,9 @@ import Link from "next/link";
 
 import NavMenu from "./NavMenu";
 import Logo from "./Logo";
-import { useUniformTracker } from "@uniformdev/optimize-tracker-react";
+import { useUniformContext } from "@uniformdev/context-react";
+
+
 
 const HamburgerIcon = () => (
   <svg
@@ -16,7 +18,7 @@ const HamburgerIcon = () => (
   </svg>
 );
 
-const LockIcon = () => (
+const LockIcon = () => ( 
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -28,7 +30,7 @@ const LockIcon = () => (
 
 const Nav = () => {
   const [submenuVisible, setSubmenuVisible] = useState(false);
-  const { tracker } = useUniformTracker();
+  const { context } = useUniformContext();
 
   return (
     <nav
@@ -64,7 +66,7 @@ const Nav = () => {
           <NavMenu />
           <ActionLink
             onClick={async () => {
-              await tracker.forgetMe();
+              await context.forget(false);
               document.cookie =
                 "unfrmconf_registered=; Path=/; samesite=lax; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
             }}

@@ -1,13 +1,10 @@
-import { IntentTags } from '@uniformdev/optimize-common';
-
 export enum ComponentType {
   Hero = 'hero',
   PersonalizedHero = 'personalized-hero'
 }
 
-export type HomeProps = {
-  title: string;
-  components: (HeroData | PersonalizedHeroData)[]
+export type CanvasToKontentProps = {
+  composition: string;
 }
 
 export type ComponentData = HeroData | PersonalizedHeroData;
@@ -17,7 +14,6 @@ export type HeroData = {
   title: string;
   description: string;
   image: string,
-  intentTag: IntentTags | undefined | null;
 }
 
 export const isHeroData = (item: { type: string }): item is HeroData => {
