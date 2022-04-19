@@ -8,7 +8,7 @@ import {
 } from "../lib/types";
 import { CanvasClient } from '@uniformdev/canvas'
 import { Composition, Slot } from '@uniformdev/canvas-react';
-import resolveRenderer from "../lib/utils";
+import {resolveRenderer} from "../lib/utils";
 
 export default function Home({ composition }: CanvasToKontentProps) {
   return (

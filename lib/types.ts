@@ -1,10 +1,12 @@
+import { ComponentInstance } from "@uniformdev/canvas/.";
+
 export enum ComponentType {
   Hero = 'hero',
   PersonalizedHero = 'personalized-hero'
 }
 
 export type CanvasToKontentProps = {
-  composition: string;
+  composition: ComponentInstance;
 }
 
 export type ComponentData = HeroData | PersonalizedHeroData;
