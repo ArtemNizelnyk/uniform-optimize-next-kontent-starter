@@ -18,7 +18,6 @@ export const convertHero = (hero: HeroItem): HeroData => {
     title: hero.title.value,
     description: hero.description.value,
     image: convertImage(hero.image),
-    intentTag: convertIntents(hero.intent_tags)
   }
 }
 
