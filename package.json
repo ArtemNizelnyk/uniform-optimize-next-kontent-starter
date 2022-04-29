@@ -13,8 +13,9 @@
     "generate:intents": "uniform context manifest get --output ./lib/intentManifest.json"
   },
   "dependencies": {
-    "@kentico/kontent-delivery": "^10.3.0",
+    "@kentico/kontent-delivery": "^11.7.0",
     "@uniformdev/canvas": "^15.0.0",
+    "@uniformdev/canvas-kontent": "^15.0.0",
     "@uniformdev/canvas-react": "^15.0.0",
     "@uniformdev/context": "^15.0.0",
     "@uniformdev/context-next": "^15.0.0",

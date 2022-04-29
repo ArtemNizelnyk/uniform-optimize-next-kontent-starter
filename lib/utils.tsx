@@ -1,8 +1,8 @@
 import { Elements } from "@kentico/kontent-delivery";
-import { HeroItem, PersonalizedHeroItem } from "./api";
 import { ComponentType, HeroData, PersonalizedHeroData } from "./types";
 import { Hero } from "../components/Hero";
 import { RenderComponentResolver } from "@uniformdev/canvas-react";
+import { ComponentInstance } from "@uniformdev/canvas/.";
 
 export const convertIntents = (IntentTagValue: Elements.CustomElement) => {
   return JSON.parse(IntentTagValue.value);
@@ -12,30 +12,23 @@ export const convertImage = (imageValue) => {
   return imageValue.value[0].url;
 };
 
-export const convertHero = (hero: HeroItem): HeroData => {
+export const convertHero = (hero: any): HeroData => {
   return {
     type: ComponentType.Hero,
-    title: hero.title.value,
-    description: hero.description.value,
-    image: convertImage(hero.image),
+    title: hero.elements.title.value,
+    description: hero.elements.description.value,
+    image: convertImage(hero.elements.image),
+    enrichment: hero.elements.enrichment,
   };
 };
 
-export const convertPersonalizedHero = (
-  component: PersonalizedHeroItem
-): PersonalizedHeroData => {
-  return {
-    type: ComponentType.PersonalizedHero,
-    heros: component.unfrmoptp13nlist.value.map(convertHero),
-  };
-};
 
 function UnknownComponent({ component }) {
   return <h1>This is unknown component type: {component.type}</h1>;
 }
 
-export const resolveRenderer: RenderComponentResolver = (type: any) => {
-  if (type == "hero") {
+export const resolveRenderer: RenderComponentResolver = (type: ComponentInstance) => {
+  if (type.type == "hero") {
     return Hero;
   }
   return UnknownComponent;

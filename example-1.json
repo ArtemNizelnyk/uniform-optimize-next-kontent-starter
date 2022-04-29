@@ -1,0 +1,202 @@
+{
+  "_id": "c5ea837c-6ee2-43ab-bada-45b8fe52beb4",
+  "type": "page",
+  "_name": "Homepage",
+  "_slug": "/",
+  "slots": {
+    "main": [
+      {
+        "type": "$personalization",
+        "slots": {
+          "pz": [
+            {
+              "type": "hero",
+              "variant": "heroForDevelopers",
+              "parameters": {
+                "image": {
+                  "type": "kontentEntry",
+                  "value": {
+                    "elements": {
+                      "enrichment": {
+                        "name": "enrichment",
+                        "type": "custom",
+                        "value": "[{\"cat\":\"1\",\"key\":\"1\",\"str\":50}]"
+                      },
+                      "title": {
+                        "name": "Title",
+                        "type": "text",
+                        "value": "Welcome to the developers talk track page"
+                      },
+                      "description": {
+                        "images": [],
+                        "linkedItemCodenames": [],
+                        "linkedItems": [],
+                        "links": [],
+                        "name": "Description",
+                        "type": "rich_text",
+                        "value": "<p>Take a look around, you'll find awesome content about developer talks</p>"
+                      },
+                      "image": {
+                        "name": "Image",
+                        "type": "asset",
+                        "value": [
+                          {
+                            "name": "teammates-thinking-about-business-report-2407297-0_-_Copy.svg",
+                            "description": null,
+                            "type": "image/svg+xml",
+                            "size": 21528,
+                            "url": "https://assets-us-01.kc-usercontent.com:443/9b1ee72c-8e7a-0055-fca2-ef882e788627/e929eed5-78dc-4e17-9263-5c19ac0feea7/teammates-thinking-about-business-report-2407297-0_-_Copy.svg",
+                            "renditions": null
+                          }
+                        ]
+                      }
+                    },
+                    "system": {
+                      "codename": "hero_banner_for_developers_page",
+                      "collection": "default",
+                      "id": "53e8ea49-922c-45bf-856b-5e29185b0726",
+                      "language": "default",
+                      "lastModified": "2022-04-19T10:34:45.271505Z",
+                      "name": "Hero Banner for Developers page",
+                      "sitemapLocations": [],
+                      "type": "hero_banner",
+                      "workflowStep": "published"
+                    }
+                  }
+                },
+                "$pzCrit": {
+                  "type": "$pzCrit",
+                  "value": { "crit": [{ "l": "1_1", "r": 50, "op": ">" }] }
+                }
+              }
+            },
+            {
+              "type": "hero",
+              "variant": "heroForMarketers",
+              "parameters": {
+                "image": {
+                  "type": "kontentEntry",
+                  "value": {
+                    "elements": {
+                      "enrichment": {
+                        "name": "enrichment",
+                        "type": "custom",
+                        "value": null
+                      },
+                      "title": {
+                        "name": "Title",
+                        "type": "text",
+                        "value": "This is the page for the marketers talk track"
+                      },
+                      "description": {
+                        "images": [],
+                        "linkedItemCodenames": [],
+                        "linkedItems": [],
+                        "links": [],
+                        "name": "Description",
+                        "type": "rich_text",
+                        "value": "<p>We have lot's of marker talks here!</p>"
+                      },
+                      "image": {
+                        "name": "Image",
+                        "type": "asset",
+                        "value": [
+                          {
+                            "name": "default.svg",
+                            "description": null,
+                            "type": "image/svg+xml",
+                            "size": 8836,
+                            "url": "https://assets-us-01.kc-usercontent.com:443/9b1ee72c-8e7a-0055-fca2-ef882e788627/3e34f3d5-bc18-4c91-b406-ac0a954550b5/default.svg",
+                            "renditions": null
+                          }
+                        ]
+                      }
+                    },
+                    "system": {
+                      "codename": "hero_banner_for_markerters_page",
+                      "collection": "default",
+                      "id": "833ce1e9-a81f-4839-b6b0-3a1e2ade7f07",
+                      "language": "default",
+                      "lastModified": "2021-07-13T11:28:10.2724389Z",
+                      "name": "Hero Banner for Markerters page",
+                      "sitemapLocations": [],
+                      "type": "hero_banner",
+                      "workflowStep": "published"
+                    }
+                  }
+                },
+                "$pzCrit": {
+                  "type": "$pzCrit",
+                  "value": { "crit": [{ "l": "2_1", "r": 50, "op": ">" }] }
+                }
+              }
+            },
+            {
+              "type": "hero",
+              "variant": "",
+              "parameters": {
+                "image": {
+                  "type": "kontentEntry",
+                  "value": {
+                    "elements": {
+                      "enrichment": {
+                        "name": "enrichment",
+                        "type": "custom",
+                        "value": null
+                      },
+                      "title": {
+                        "name": "Title",
+                        "type": "text",
+                        "value": "This banner is for non-personalized people"
+                      },
+                      "description": {
+                        "images": [],
+                        "linkedItemCodenames": [],
+                        "linkedItems": [],
+                        "links": [],
+                        "name": "Description",
+                        "type": "rich_text",
+                        "value": "<p>I did not personalize for you!</p>"
+                      },
+                      "image": {
+                        "name": "Image",
+                        "type": "asset",
+                        "value": [
+                          {
+                            "name": "default.svg",
+                            "description": null,
+                            "type": "image/svg+xml",
+                            "size": 8836,
+                            "url": "https://assets-us-01.kc-usercontent.com:443/9b1ee72c-8e7a-0055-fca2-ef882e788627/3e34f3d5-bc18-4c91-b406-ac0a954550b5/default.svg",
+                            "renditions": null
+                          }
+                        ]
+                      }
+                    },
+                    "system": {
+                      "codename": "default_banner",
+                      "collection": "default",
+                      "id": "6351f81c-5d19-4ba4-b9f4-f2955ea1c3f1",
+                      "language": "default",
+                      "lastModified": "2021-07-02T07:00:26.8839782Z",
+                      "name": "Default Banner P13n Variation",
+                      "sitemapLocations": [],
+                      "type": "hero_banner",
+                      "workflowStep": "published"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "parameters": {
+          "count": { "type": "text", "value": "3" },
+          "matchFilter": { "type": "select", "value": "personalizedOrDefault" },
+          "trackingEventName": { "type": "text", "value": "heroPersonalized" }
+        }
+      }
+    ]
+  },
+  "parameters": {}
+}

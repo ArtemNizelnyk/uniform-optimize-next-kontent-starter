@@ -1,21 +1,20 @@
 import React from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import {
-  CanvasToKontentProps,
-  ComponentData,
-  isHeroData,
-  isPersonalizedHeroData,
+  CanvasToKontentProps, HeroComponentProps
 } from "../lib/types";
-import { CanvasClient } from '@uniformdev/canvas'
+import { CanvasClient, enhance, EnhancerBuilder } from '@uniformdev/canvas'
 import { Composition, Slot } from '@uniformdev/canvas-react';
 import {resolveRenderer} from "../lib/utils";
+import { kontentEnhancer } from "../lib/enchansing";
+import { CANVAS_KONTENT_PARAMETER_TYPES } from "@uniformdev/canvas-kontent";
 
 export default function Home({ composition }: CanvasToKontentProps) {
   return (
     <>
     <div>some strange data here</div>
-    <Composition data={composition} resolveRenderer={resolveRenderer}>
-        <Slot name="main" />
+    <Composition<HeroComponentProps> data={composition} resolveRenderer={resolveRenderer}>
+      <Slot name="main" />      
     </Composition>
 
     </>
@@ -39,6 +38,13 @@ export const getStaticProps: GetStaticProps<CanvasToKontentProps> = async (conte
       // if you used something else as your slug, use that here instead
       slug: "/"+slug,
     });
+
+    await enhance({
+      composition,
+      enhancers: new EnhancerBuilder().parameterType(CANVAS_KONTENT_PARAMETER_TYPES, kontentEnhancer),
+      context: {},
+    });
+    //console.log (composition.slots.main[0].slots.pz[0].parameters.image.value)
   
     // set `composition` as a prop to the route
     return {
