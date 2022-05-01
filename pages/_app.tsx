@@ -1,18 +1,20 @@
-import "../styles/globals.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import { UniformContext } from '@uniformdev/context-react';
+import type { UniformAppProps } from '@uniformdev/context-next';
+import { createUniformContext } from '../lib/uniformContext';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import '../styles/globals.css';
 
-import localTracker from "../lib/local-tracker";
-import { UniformTracker } from "@uniformdev/optimize-tracker-react";
+const clientContext = createUniformContext();
 
-function MyApp({ Component, pageProps }) {
+function UniformContextApp({ Component, pageProps, serverUniformContext }: UniformAppProps) {
   return (
-    <UniformTracker trackerInstance={localTracker}>
+    <UniformContext context={serverUniformContext ?? clientContext}>
       <Navbar />
       <Component {...pageProps} />
       <Footer />
-    </UniformTracker>
+    </UniformContext>
   );
 }
 
-export default MyApp;
+export default UniformContextApp;

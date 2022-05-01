@@ -1,1 +1,0 @@
-This was extracted with https://kentico.github.io/kontent-template-manager/export. Import this zip through this app by providing keys.

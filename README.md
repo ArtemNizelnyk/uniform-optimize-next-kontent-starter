@@ -1,20 +1,79 @@
-
-# Uniform Optimize Kontent Taxonomy Integration
-A "lite" integration of Uniform Optimize intents leveraging Kontent taxonomy.
+This is StarterKit/Example of [Next.js](https://nextjs.org/) project with direct integration of [Uniform Context](https://docs.uniform.app/context/) with [Kontent](https://kontent.ai/) via Uniform Context app
 
 ## Getting Started
-* `yarn install`
-* Restore the backup located in the `data` directory using https://kentico.github.io/kontent-template-manager/import
-* Copy `.env.example` to `.env`
-* Populate the `KONTENT_PROJECT_ID` in `.env` using your `Project Id` from Kontent
-* Sign up or create a new account for [Uniform Optimize](https://uniform.app/).
-* Create a site in Uniform Optimize
-* Create an API key in Uniform Optimize in Site Settings
-* Populate `UNIFORM_API_KEY` in `.env` with the Uniform Optimize API key
-* Create an intent named `Developer` with a public ID of `dev`. `dev` is what is stored on the taxonomy item's `codename`.
-* Create an intent named `Marketer`
-* Publish the site in Uniform Optimize
-* `yarn generate:intents`
-* `yarn dev`
 
-In production builds, `generate:intents` should be run before each site builds so all of the latest intent data is built with the application.
+First, you need provide API keys to connect with empty Uniform App project and empty Stack in Contentstack:
+
+Copy `.env.example` into `.env` and fill all the keys, for example:
+
+**IMPORTANT**: run slug generation script to enable SSR or SSG - `npm run generate:slug-page`
+
+> The API key must have all the write permissions for Uniform Context in order to complete the setup below.
+
+### Step 1: setup Uniform Context
+
+1. `npm install`
+1. Start by running import the Uniform Context definitions from local disk (`/data/context`) into your Uniform project by running this command:
+
+    ```
+    npm run push:context
+    ```
+
+1. If the command above is successful, now let's pull the newly imported Context definitions into a local manifest stored in `/lib/context-manifest.json` by running this command:
+
+    ```
+    npm run generate:manifest
+    ```
+
+### Step 2: setup Kontent Project content structure and actual content
+
+Run backup import to install content models and create+publish content and assets:
+
+```
+ kontent backup --action restore --name ./scripts/kontent-export --project-id <KONTEN_PROJECT_ID> --api-key <KONTENT_MANAGEMENT_KEY>
+```
+
+### Run the project
+
+Run dev server:
+
+```
+npm run dev
+```
+
+Or run production:
+
+```
+npm run build
+npm run start
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Export you local changes in Contentstack and Uniform
+
+Export latest Kontent content model and content:
+
+```
+kontent backup --action backup --project-id <KONTEN_PROJECT_ID> --api-key <KONTENT_MANAGEMENT_KEY>
+```
+
+Update TS types after changes in Kontent content structure
+
+```
+pnpm generate:types
+```
+
+Export Uniform Dev
+
+```
+npm run pull:context
+```
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Kontent CMS JS SDK](https://kontent.ai/learn/tutorials/develop-apps/overview/?tech=javascript) - learn about Kontent JS SKD.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.

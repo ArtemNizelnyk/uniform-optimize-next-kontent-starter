@@ -1,37 +1,52 @@
-import { ContentItem, DeliveryClient, Elements, IContentItem, TypeResolver } from "@kentico/kontent-delivery";
+import {
+  createDeliveryClient,
+  IContentItem,
+  IContentItemElements,
+  camelCasePropertyNameResolver,
+} from '@kentico/kontent-delivery';
+import type { Page } from './contentTypes/page';
 
-export type ComponentType = PersonalizedHeroItem | HeroItem;
-
-export class PageItem extends ContentItem {
-  public page_components: Elements.LinkedItemsElement<ComponentType>;
-  public title: Elements.TextElement
-  public slug: Elements.UrlSlugElement
+if (!process.env.KONTEN_PROJECT_ID) {
+  throw new Error('KONTEN_PROJECT_ID env not set.');
 }
 
-export class PersonalizedHeroItem extends ContentItem {
-  public unfrmoptp13nlist: Elements.LinkedItemsElement<IContentItem>;
+if (!process.env.KONTENT_PREVIEW_PRIMARY_KEY) {
+  throw new Error('KONTENT_PREVIEW_PRIMARY_KEY env not set.');
 }
 
-export const isPersonalizedHeroItem = (item: IContentItem): item is PersonalizedHeroItem => {
-  return item.system.type === 'personalized_hero_banner';
+if (!process.env.KONTENT_PREVIEW_SECONDARY_KEY) {
+  throw new Error('KONTENT_PREVIEW_SECONDARY_KEY env not set.');
 }
 
-export class HeroItem extends ContentItem {
-  public title: Elements.TextElement;
-  public description: Elements.RichTextElement;
-  public image: Elements.AssetsElement;
-  public intent_tags: Elements.CustomElement;
-}
-
-export const isHeroItem = (item: IContentItem): item is HeroItem => {
-  return item.system.type === 'hero_banner';
-}
-
-export const deliveryClient = new DeliveryClient({
-  projectId: process.env.KONTENT_PROJECT_ID,
-  typeResolvers: [
-    new TypeResolver('page', () => new PageItem()),
-    new TypeResolver('personalized_hero_banner', () => new PersonalizedHeroItem()),
-    new TypeResolver('hero_banner', () => new HeroItem())
-  ],
+const deliveryClient = createDeliveryClient({
+  projectId: process.env.KONTEN_PROJECT_ID,
+  previewApiKey: process.env.KONTENT_PREVIEW_PRIMARY_KEY,
+  propertyNameResolver: camelCasePropertyNameResolver,
 });
+
+const client = deliveryClient;
+
+const previewClient = deliveryClient;
+
+const getClient = (preview: boolean) => (preview ? previewClient : client);
+
+export const getPageBySlug = async (preview: boolean, slug: string): Promise<Page | undefined> => {
+  const result = await getClient(preview)
+    .items<Page>()
+    .type('page')
+    .equalsFilter('elements.slug', slug)
+    .depthParameter(3)
+    .toPromise();
+
+  const first = result.data.items[0];
+  return first ?? undefined;
+};
+
+export const getEntriesByContentType = async <T extends IContentItemElements>(
+  preview: boolean,
+  type: string
+): Promise<IContentItem<T>[]> => {
+  const result = await getClient(preview).items<IContentItem<T>>().type(type).toPromise();
+
+  return result.data.items;
+};
